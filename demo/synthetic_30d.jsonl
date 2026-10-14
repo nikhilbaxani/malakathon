@@ -1,0 +1,184 @@
+{"host": "workstation-0", "id": "benign-00-0", "outcome": "success", "timestamp": "2026-09-15T01:00:00Z", "type": "login", "user": "analyst-0"}
+{"host": "workstation-0", "id": "benign-00-1", "new_role": "admin", "old_role": "user", "outcome": "denied", "timestamp": "2026-09-15T04:00:00Z", "type": "privilege_change", "user": "analyst-0"}
+{"bytes": 1048576, "destination_scope": "external", "direction": "outbound", "host": "workstation-0", "id": "benign-00-2", "timestamp": "2026-09-15T07:00:00Z", "type": "data_transfer", "user": "analyst-0"}
+{"host": "workstation-0", "id": "benign-00-3", "outcome": "failed", "timestamp": "2026-09-15T10:00:00Z", "type": "audit_logging_disabled", "user": "analyst-0"}
+{"bytes": 15728640, "destination_scope": "internal", "direction": "outbound", "host": "workstation-0", "id": "benign-00-4", "timestamp": "2026-09-15T13:00:00Z", "type": "data_transfer", "user": "analyst-0"}
+{"host": "workstation-0", "id": "benign-00-5", "outcome": "denied", "timestamp": "2026-09-15T16:00:00Z", "type": "service_stopped", "user": "analyst-0"}
+{"host": "workstation-1", "id": "benign-01-0", "outcome": "success", "timestamp": "2026-09-16T01:00:00Z", "type": "login", "user": "analyst-1"}
+{"host": "workstation-1", "id": "benign-01-1", "new_role": "admin", "old_role": "user", "outcome": "denied", "timestamp": "2026-09-16T04:00:00Z", "type": "privilege_change", "user": "analyst-1"}
+{"bytes": 1048576, "destination_scope": "external", "direction": "outbound", "host": "workstation-1", "id": "benign-01-2", "timestamp": "2026-09-16T07:00:00Z", "type": "data_transfer", "user": "analyst-1"}
+{"host": "workstation-1", "id": "benign-01-3", "outcome": "failed", "timestamp": "2026-09-16T10:00:00Z", "type": "audit_logging_disabled", "user": "analyst-1"}
+{"bytes": 15728640, "destination_scope": "internal", "direction": "outbound", "host": "workstation-1", "id": "benign-01-4", "timestamp": "2026-09-16T13:00:00Z", "type": "data_transfer", "user": "analyst-1"}
+{"host": "workstation-1", "id": "benign-01-5", "outcome": "denied", "timestamp": "2026-09-16T16:00:00Z", "type": "service_stopped", "user": "analyst-1"}
+{"host": "workstation-2", "id": "benign-02-0", "outcome": "success", "timestamp": "2026-09-17T01:00:00Z", "type": "login", "user": "analyst-2"}
+{"host": "workstation-2", "id": "benign-02-1", "new_role": "admin", "old_role": "user", "outcome": "denied", "timestamp": "2026-09-17T04:00:00Z", "type": "privilege_change", "user": "analyst-2"}
+{"bytes": 1048576, "destination_scope": "external", "direction": "outbound", "host": "workstation-2", "id": "benign-02-2", "timestamp": "2026-09-17T07:00:00Z", "type": "data_transfer", "user": "analyst-2"}
+{"host": "workstation-2", "id": "benign-02-3", "outcome": "failed", "timestamp": "2026-09-17T10:00:00Z", "type": "audit_logging_disabled", "user": "analyst-2"}
+{"bytes": 15728640, "destination_scope": "internal", "direction": "outbound", "host": "workstation-2", "id": "benign-02-4", "timestamp": "2026-09-17T13:00:00Z", "type": "data_transfer", "user": "analyst-2"}
+{"host": "workstation-2", "id": "benign-02-5", "outcome": "denied", "timestamp": "2026-09-17T16:00:00Z", "type": "service_stopped", "user": "analyst-2"}
+{"host": "workstation-3", "id": "benign-03-0", "outcome": "success", "timestamp": "2026-09-18T01:00:00Z", "type": "login", "user": "analyst-3"}
+{"host": "workstation-3", "id": "benign-03-1", "new_role": "admin", "old_role": "user", "outcome": "denied", "timestamp": "2026-09-18T04:00:00Z", "type": "privilege_change", "user": "analyst-3"}
+{"bytes": 1048576, "destination_scope": "external", "direction": "outbound", "host": "workstation-3", "id": "benign-03-2", "timestamp": "2026-09-18T07:00:00Z", "type": "data_transfer", "user": "analyst-3"}
+{"host": "workstation-3", "id": "benign-03-3", "outcome": "failed", "timestamp": "2026-09-18T10:00:00Z", "type": "audit_logging_disabled", "user": "analyst-3"}
+{"bytes": 15728640, "destination_scope": "internal", "direction": "outbound", "host": "workstation-3", "id": "benign-03-4", "timestamp": "2026-09-18T13:00:00Z", "type": "data_transfer", "user": "analyst-3"}
+{"host": "workstation-3", "id": "benign-03-5", "outcome": "denied", "timestamp": "2026-09-18T16:00:00Z", "type": "service_stopped", "user": "analyst-3"}
+{"host": "workstation-4", "id": "benign-04-0", "outcome": "success", "timestamp": "2026-09-19T01:00:00Z", "type": "login", "user": "analyst-4"}
+{"host": "workstation-4", "id": "benign-04-1", "new_role": "admin", "old_role": "user", "outcome": "denied", "timestamp": "2026-09-19T04:00:00Z", "type": "privilege_change", "user": "analyst-4"}
+{"bytes": 1048576, "destination_scope": "external", "direction": "outbound", "host": "workstation-4", "id": "benign-04-2", "timestamp": "2026-09-19T07:00:00Z", "type": "data_transfer", "user": "analyst-4"}
+{"host": "workstation-4", "id": "benign-04-3", "outcome": "failed", "timestamp": "2026-09-19T10:00:00Z", "type": "audit_logging_disabled", "user": "analyst-4"}
+{"bytes": 15728640, "destination_scope": "internal", "direction": "outbound", "host": "workstation-4", "id": "benign-04-4", "timestamp": "2026-09-19T13:00:00Z", "type": "data_transfer", "user": "analyst-4"}
+{"host": "workstation-4", "id": "benign-04-5", "outcome": "denied", "timestamp": "2026-09-19T16:00:00Z", "type": "service_stopped", "user": "analyst-4"}
+{"host": "workstation-0", "id": "benign-05-0", "outcome": "success", "timestamp": "2026-09-20T01:00:00Z", "type": "login", "user": "analyst-0"}
+{"host": "workstation-0", "id": "benign-05-1", "new_role": "admin", "old_role": "user", "outcome": "denied", "timestamp": "2026-09-20T04:00:00Z", "type": "privilege_change", "user": "analyst-0"}
+{"bytes": 1048576, "destination_scope": "external", "direction": "outbound", "host": "workstation-0", "id": "benign-05-2", "timestamp": "2026-09-20T07:00:00Z", "type": "data_transfer", "user": "analyst-0"}
+{"host": "workstation-0", "id": "benign-05-3", "outcome": "failed", "timestamp": "2026-09-20T10:00:00Z", "type": "audit_logging_disabled", "user": "analyst-0"}
+{"bytes": 15728640, "destination_scope": "internal", "direction": "outbound", "host": "workstation-0", "id": "benign-05-4", "timestamp": "2026-09-20T13:00:00Z", "type": "data_transfer", "user": "analyst-0"}
+{"host": "workstation-0", "id": "benign-05-5", "outcome": "denied", "timestamp": "2026-09-20T16:00:00Z", "type": "service_stopped", "user": "analyst-0"}
+{"host": "workstation-1", "id": "benign-06-0", "outcome": "success", "timestamp": "2026-09-21T01:00:00Z", "type": "login", "user": "analyst-1"}
+{"host": "workstation-1", "id": "benign-06-1", "new_role": "admin", "old_role": "user", "outcome": "denied", "timestamp": "2026-09-21T04:00:00Z", "type": "privilege_change", "user": "analyst-1"}
+{"bytes": 1048576, "destination_scope": "external", "direction": "outbound", "host": "workstation-1", "id": "benign-06-2", "timestamp": "2026-09-21T07:00:00Z", "type": "data_transfer", "user": "analyst-1"}
+{"host": "workstation-1", "id": "benign-06-3", "outcome": "failed", "timestamp": "2026-09-21T10:00:00Z", "type": "audit_logging_disabled", "user": "analyst-1"}
+{"bytes": 15728640, "destination_scope": "internal", "direction": "outbound", "host": "workstation-1", "id": "benign-06-4", "timestamp": "2026-09-21T13:00:00Z", "type": "data_transfer", "user": "analyst-1"}
+{"host": "workstation-1", "id": "benign-06-5", "outcome": "denied", "timestamp": "2026-09-21T16:00:00Z", "type": "service_stopped", "user": "analyst-1"}
+{"host": "workstation-2", "id": "benign-07-0", "outcome": "success", "timestamp": "2026-09-22T01:00:00Z", "type": "login", "user": "analyst-2"}
+{"host": "workstation-2", "id": "benign-07-1", "new_role": "admin", "old_role": "user", "outcome": "denied", "timestamp": "2026-09-22T04:00:00Z", "type": "privilege_change", "user": "analyst-2"}
+{"bytes": 1048576, "destination_scope": "external", "direction": "outbound", "host": "workstation-2", "id": "benign-07-2", "timestamp": "2026-09-22T07:00:00Z", "type": "data_transfer", "user": "analyst-2"}
+{"host": "workstation-2", "id": "benign-07-3", "outcome": "failed", "timestamp": "2026-09-22T10:00:00Z", "type": "audit_logging_disabled", "user": "analyst-2"}
+{"bytes": 15728640, "destination_scope": "internal", "direction": "outbound", "host": "workstation-2", "id": "benign-07-4", "timestamp": "2026-09-22T13:00:00Z", "type": "data_transfer", "user": "analyst-2"}
+{"host": "workstation-2", "id": "benign-07-5", "outcome": "denied", "timestamp": "2026-09-22T16:00:00Z", "type": "service_stopped", "user": "analyst-2"}
+{"host": "workstation-3", "id": "benign-08-0", "outcome": "success", "timestamp": "2026-09-23T01:00:00Z", "type": "login", "user": "analyst-3"}
+{"host": "workstation-3", "id": "benign-08-1", "new_role": "admin", "old_role": "user", "outcome": "denied", "timestamp": "2026-09-23T04:00:00Z", "type": "privilege_change", "user": "analyst-3"}
+{"bytes": 1048576, "destination_scope": "external", "direction": "outbound", "host": "workstation-3", "id": "benign-08-2", "timestamp": "2026-09-23T07:00:00Z", "type": "data_transfer", "user": "analyst-3"}
+{"host": "workstation-3", "id": "benign-08-3", "outcome": "failed", "timestamp": "2026-09-23T10:00:00Z", "type": "audit_logging_disabled", "user": "analyst-3"}
+{"bytes": 15728640, "destination_scope": "internal", "direction": "outbound", "host": "workstation-3", "id": "benign-08-4", "timestamp": "2026-09-23T13:00:00Z", "type": "data_transfer", "user": "analyst-3"}
+{"host": "workstation-3", "id": "benign-08-5", "outcome": "denied", "timestamp": "2026-09-23T16:00:00Z", "type": "service_stopped", "user": "analyst-3"}
+{"host": "workstation-4", "id": "benign-09-0", "outcome": "success", "timestamp": "2026-09-24T01:00:00Z", "type": "login", "user": "analyst-4"}
+{"host": "workstation-4", "id": "benign-09-1", "new_role": "admin", "old_role": "user", "outcome": "denied", "timestamp": "2026-09-24T04:00:00Z", "type": "privilege_change", "user": "analyst-4"}
+{"bytes": 1048576, "destination_scope": "external", "direction": "outbound", "host": "workstation-4", "id": "benign-09-2", "timestamp": "2026-09-24T07:00:00Z", "type": "data_transfer", "user": "analyst-4"}
+{"host": "workstation-4", "id": "benign-09-3", "outcome": "failed", "timestamp": "2026-09-24T10:00:00Z", "type": "audit_logging_disabled", "user": "analyst-4"}
+{"bytes": 15728640, "destination_scope": "internal", "direction": "outbound", "host": "workstation-4", "id": "benign-09-4", "timestamp": "2026-09-24T13:00:00Z", "type": "data_transfer", "user": "analyst-4"}
+{"host": "workstation-4", "id": "benign-09-5", "outcome": "denied", "timestamp": "2026-09-24T16:00:00Z", "type": "service_stopped", "user": "analyst-4"}
+{"host": "workstation-0", "id": "benign-10-0", "outcome": "success", "timestamp": "2026-09-25T01:00:00Z", "type": "login", "user": "analyst-0"}
+{"host": "workstation-0", "id": "benign-10-1", "new_role": "admin", "old_role": "user", "outcome": "denied", "timestamp": "2026-09-25T04:00:00Z", "type": "privilege_change", "user": "analyst-0"}
+{"bytes": 1048576, "destination_scope": "external", "direction": "outbound", "host": "workstation-0", "id": "benign-10-2", "timestamp": "2026-09-25T07:00:00Z", "type": "data_transfer", "user": "analyst-0"}
+{"host": "workstation-0", "id": "benign-10-3", "outcome": "failed", "timestamp": "2026-09-25T10:00:00Z", "type": "audit_logging_disabled", "user": "analyst-0"}
+{"bytes": 15728640, "destination_scope": "internal", "direction": "outbound", "host": "workstation-0", "id": "benign-10-4", "timestamp": "2026-09-25T13:00:00Z", "type": "data_transfer", "user": "analyst-0"}
+{"host": "workstation-0", "id": "benign-10-5", "outcome": "denied", "timestamp": "2026-09-25T16:00:00Z", "type": "service_stopped", "user": "analyst-0"}
+{"host": "workstation-1", "id": "benign-11-0", "outcome": "success", "timestamp": "2026-09-26T01:00:00Z", "type": "login", "user": "analyst-1"}
+{"host": "workstation-1", "id": "benign-11-1", "new_role": "admin", "old_role": "user", "outcome": "denied", "timestamp": "2026-09-26T04:00:00Z", "type": "privilege_change", "user": "analyst-1"}
+{"bytes": 1048576, "destination_scope": "external", "direction": "outbound", "host": "workstation-1", "id": "benign-11-2", "timestamp": "2026-09-26T07:00:00Z", "type": "data_transfer", "user": "analyst-1"}
+{"host": "workstation-1", "id": "benign-11-3", "outcome": "failed", "timestamp": "2026-09-26T10:00:00Z", "type": "audit_logging_disabled", "user": "analyst-1"}
+{"bytes": 15728640, "destination_scope": "internal", "direction": "outbound", "host": "workstation-1", "id": "benign-11-4", "timestamp": "2026-09-26T13:00:00Z", "type": "data_transfer", "user": "analyst-1"}
+{"host": "workstation-1", "id": "benign-11-5", "outcome": "denied", "timestamp": "2026-09-26T16:00:00Z", "type": "service_stopped", "user": "analyst-1"}
+{"host": "workstation-2", "id": "benign-12-0", "outcome": "success", "timestamp": "2026-09-27T01:00:00Z", "type": "login", "user": "analyst-2"}
+{"host": "workstation-2", "id": "benign-12-1", "new_role": "admin", "old_role": "user", "outcome": "denied", "timestamp": "2026-09-27T04:00:00Z", "type": "privilege_change", "user": "analyst-2"}
+{"bytes": 1048576, "destination_scope": "external", "direction": "outbound", "host": "workstation-2", "id": "benign-12-2", "timestamp": "2026-09-27T07:00:00Z", "type": "data_transfer", "user": "analyst-2"}
+{"host": "workstation-2", "id": "benign-12-3", "outcome": "failed", "timestamp": "2026-09-27T10:00:00Z", "type": "audit_logging_disabled", "user": "analyst-2"}
+{"bytes": 15728640, "destination_scope": "internal", "direction": "outbound", "host": "workstation-2", "id": "benign-12-4", "timestamp": "2026-09-27T13:00:00Z", "type": "data_transfer", "user": "analyst-2"}
+{"host": "workstation-2", "id": "benign-12-5", "outcome": "denied", "timestamp": "2026-09-27T16:00:00Z", "type": "service_stopped", "user": "analyst-2"}
+{"host": "workstation-3", "id": "benign-13-0", "outcome": "success", "timestamp": "2026-09-28T01:00:00Z", "type": "login", "user": "analyst-3"}
+{"host": "workstation-3", "id": "benign-13-1", "new_role": "admin", "old_role": "user", "outcome": "denied", "timestamp": "2026-09-28T04:00:00Z", "type": "privilege_change", "user": "analyst-3"}
+{"bytes": 1048576, "destination_scope": "external", "direction": "outbound", "host": "workstation-3", "id": "benign-13-2", "timestamp": "2026-09-28T07:00:00Z", "type": "data_transfer", "user": "analyst-3"}
+{"host": "workstation-3", "id": "benign-13-3", "outcome": "failed", "timestamp": "2026-09-28T10:00:00Z", "type": "audit_logging_disabled", "user": "analyst-3"}
+{"bytes": 15728640, "destination_scope": "internal", "direction": "outbound", "host": "workstation-3", "id": "benign-13-4", "timestamp": "2026-09-28T13:00:00Z", "type": "data_transfer", "user": "analyst-3"}
+{"host": "workstation-3", "id": "benign-13-5", "outcome": "denied", "timestamp": "2026-09-28T16:00:00Z", "type": "service_stopped", "user": "analyst-3"}
+{"host": "workstation-4", "id": "benign-14-0", "outcome": "success", "timestamp": "2026-09-29T01:00:00Z", "type": "login", "user": "analyst-4"}
+{"host": "workstation-4", "id": "benign-14-1", "new_role": "admin", "old_role": "user", "outcome": "denied", "timestamp": "2026-09-29T04:00:00Z", "type": "privilege_change", "user": "analyst-4"}
+{"bytes": 1048576, "destination_scope": "external", "direction": "outbound", "host": "workstation-4", "id": "benign-14-2", "timestamp": "2026-09-29T07:00:00Z", "type": "data_transfer", "user": "analyst-4"}
+{"host": "workstation-4", "id": "benign-14-3", "outcome": "failed", "timestamp": "2026-09-29T10:00:00Z", "type": "audit_logging_disabled", "user": "analyst-4"}
+{"bytes": 15728640, "destination_scope": "internal", "direction": "outbound", "host": "workstation-4", "id": "benign-14-4", "timestamp": "2026-09-29T13:00:00Z", "type": "data_transfer", "user": "analyst-4"}
+{"host": "workstation-4", "id": "benign-14-5", "outcome": "denied", "timestamp": "2026-09-29T16:00:00Z", "type": "service_stopped", "user": "analyst-4"}
+{"host": "workstation-0", "id": "benign-15-0", "outcome": "success", "timestamp": "2026-09-30T01:00:00Z", "type": "login", "user": "analyst-0"}
+{"host": "workstation-0", "id": "benign-15-1", "new_role": "admin", "old_role": "user", "outcome": "denied", "timestamp": "2026-09-30T04:00:00Z", "type": "privilege_change", "user": "analyst-0"}
+{"bytes": 1048576, "destination_scope": "external", "direction": "outbound", "host": "workstation-0", "id": "benign-15-2", "timestamp": "2026-09-30T07:00:00Z", "type": "data_transfer", "user": "analyst-0"}
+{"host": "workstation-0", "id": "benign-15-3", "outcome": "failed", "timestamp": "2026-09-30T10:00:00Z", "type": "audit_logging_disabled", "user": "analyst-0"}
+{"bytes": 15728640, "destination_scope": "internal", "direction": "outbound", "host": "workstation-0", "id": "benign-15-4", "timestamp": "2026-09-30T13:00:00Z", "type": "data_transfer", "user": "analyst-0"}
+{"host": "workstation-0", "id": "benign-15-5", "outcome": "denied", "timestamp": "2026-09-30T16:00:00Z", "type": "service_stopped", "user": "analyst-0"}
+{"host": "workstation-1", "id": "benign-16-0", "outcome": "success", "timestamp": "2026-10-01T01:00:00Z", "type": "login", "user": "analyst-1"}
+{"host": "workstation-1", "id": "benign-16-1", "new_role": "admin", "old_role": "user", "outcome": "denied", "timestamp": "2026-10-01T04:00:00Z", "type": "privilege_change", "user": "analyst-1"}
+{"bytes": 1048576, "destination_scope": "external", "direction": "outbound", "host": "workstation-1", "id": "benign-16-2", "timestamp": "2026-10-01T07:00:00Z", "type": "data_transfer", "user": "analyst-1"}
+{"host": "workstation-1", "id": "benign-16-3", "outcome": "failed", "timestamp": "2026-10-01T10:00:00Z", "type": "audit_logging_disabled", "user": "analyst-1"}
+{"bytes": 15728640, "destination_scope": "internal", "direction": "outbound", "host": "workstation-1", "id": "benign-16-4", "timestamp": "2026-10-01T13:00:00Z", "type": "data_transfer", "user": "analyst-1"}
+{"host": "workstation-1", "id": "benign-16-5", "outcome": "denied", "timestamp": "2026-10-01T16:00:00Z", "type": "service_stopped", "user": "analyst-1"}
+{"host": "workstation-2", "id": "benign-17-0", "outcome": "success", "timestamp": "2026-10-02T01:00:00Z", "type": "login", "user": "analyst-2"}
+{"host": "workstation-2", "id": "benign-17-1", "new_role": "admin", "old_role": "user", "outcome": "denied", "timestamp": "2026-10-02T04:00:00Z", "type": "privilege_change", "user": "analyst-2"}
+{"bytes": 1048576, "destination_scope": "external", "direction": "outbound", "host": "workstation-2", "id": "benign-17-2", "timestamp": "2026-10-02T07:00:00Z", "type": "data_transfer", "user": "analyst-2"}
+{"host": "workstation-2", "id": "benign-17-3", "outcome": "failed", "timestamp": "2026-10-02T10:00:00Z", "type": "audit_logging_disabled", "user": "analyst-2"}
+{"bytes": 15728640, "destination_scope": "internal", "direction": "outbound", "host": "workstation-2", "id": "benign-17-4", "timestamp": "2026-10-02T13:00:00Z", "type": "data_transfer", "user": "analyst-2"}
+{"host": "workstation-2", "id": "benign-17-5", "outcome": "denied", "timestamp": "2026-10-02T16:00:00Z", "type": "service_stopped", "user": "analyst-2"}
+{"host": "workstation-3", "id": "benign-18-0", "outcome": "success", "timestamp": "2026-10-03T01:00:00Z", "type": "login", "user": "analyst-3"}
+{"host": "workstation-3", "id": "benign-18-1", "new_role": "admin", "old_role": "user", "outcome": "denied", "timestamp": "2026-10-03T04:00:00Z", "type": "privilege_change", "user": "analyst-3"}
+{"bytes": 1048576, "destination_scope": "external", "direction": "outbound", "host": "workstation-3", "id": "benign-18-2", "timestamp": "2026-10-03T07:00:00Z", "type": "data_transfer", "user": "analyst-3"}
+{"host": "workstation-3", "id": "benign-18-3", "outcome": "failed", "timestamp": "2026-10-03T10:00:00Z", "type": "audit_logging_disabled", "user": "analyst-3"}
+{"bytes": 15728640, "destination_scope": "internal", "direction": "outbound", "host": "workstation-3", "id": "benign-18-4", "timestamp": "2026-10-03T13:00:00Z", "type": "data_transfer", "user": "analyst-3"}
+{"host": "workstation-3", "id": "benign-18-5", "outcome": "denied", "timestamp": "2026-10-03T16:00:00Z", "type": "service_stopped", "user": "analyst-3"}
+{"host": "workstation-4", "id": "benign-19-0", "outcome": "success", "timestamp": "2026-10-04T01:00:00Z", "type": "login", "user": "analyst-4"}
+{"host": "workstation-4", "id": "benign-19-1", "new_role": "admin", "old_role": "user", "outcome": "denied", "timestamp": "2026-10-04T04:00:00Z", "type": "privilege_change", "user": "analyst-4"}
+{"bytes": 1048576, "destination_scope": "external", "direction": "outbound", "host": "workstation-4", "id": "benign-19-2", "timestamp": "2026-10-04T07:00:00Z", "type": "data_transfer", "user": "analyst-4"}
+{"host": "workstation-4", "id": "benign-19-3", "outcome": "failed", "timestamp": "2026-10-04T10:00:00Z", "type": "audit_logging_disabled", "user": "analyst-4"}
+{"bytes": 15728640, "destination_scope": "internal", "direction": "outbound", "host": "workstation-4", "id": "benign-19-4", "timestamp": "2026-10-04T13:00:00Z", "type": "data_transfer", "user": "analyst-4"}
+{"host": "workstation-4", "id": "benign-19-5", "outcome": "denied", "timestamp": "2026-10-04T16:00:00Z", "type": "service_stopped", "user": "analyst-4"}
+{"host": "workstation-0", "id": "benign-20-0", "outcome": "success", "timestamp": "2026-10-05T01:00:00Z", "type": "login", "user": "analyst-0"}
+{"host": "workstation-0", "id": "benign-20-1", "new_role": "admin", "old_role": "user", "outcome": "denied", "timestamp": "2026-10-05T04:00:00Z", "type": "privilege_change", "user": "analyst-0"}
+{"bytes": 1048576, "destination_scope": "external", "direction": "outbound", "host": "workstation-0", "id": "benign-20-2", "timestamp": "2026-10-05T07:00:00Z", "type": "data_transfer", "user": "analyst-0"}
+{"host": "workstation-0", "id": "benign-20-3", "outcome": "failed", "timestamp": "2026-10-05T10:00:00Z", "type": "audit_logging_disabled", "user": "analyst-0"}
+{"bytes": 15728640, "destination_scope": "internal", "direction": "outbound", "host": "workstation-0", "id": "benign-20-4", "timestamp": "2026-10-05T13:00:00Z", "type": "data_transfer", "user": "analyst-0"}
+{"host": "workstation-0", "id": "benign-20-5", "outcome": "denied", "timestamp": "2026-10-05T16:00:00Z", "type": "service_stopped", "user": "analyst-0"}
+{"host": "workstation-1", "id": "benign-21-0", "outcome": "success", "timestamp": "2026-10-06T01:00:00Z", "type": "login", "user": "analyst-1"}
+{"host": "workstation-1", "id": "benign-21-1", "new_role": "admin", "old_role": "user", "outcome": "denied", "timestamp": "2026-10-06T04:00:00Z", "type": "privilege_change", "user": "analyst-1"}
+{"bytes": 1048576, "destination_scope": "external", "direction": "outbound", "host": "workstation-1", "id": "benign-21-2", "timestamp": "2026-10-06T07:00:00Z", "type": "data_transfer", "user": "analyst-1"}
+{"host": "workstation-1", "id": "benign-21-3", "outcome": "failed", "timestamp": "2026-10-06T10:00:00Z", "type": "audit_logging_disabled", "user": "analyst-1"}
+{"bytes": 15728640, "destination_scope": "internal", "direction": "outbound", "host": "workstation-1", "id": "benign-21-4", "timestamp": "2026-10-06T13:00:00Z", "type": "data_transfer", "user": "analyst-1"}
+{"host": "workstation-1", "id": "benign-21-5", "outcome": "denied", "timestamp": "2026-10-06T16:00:00Z", "type": "service_stopped", "user": "analyst-1"}
+{"host": "workstation-2", "id": "benign-22-0", "outcome": "success", "timestamp": "2026-10-07T01:00:00Z", "type": "login", "user": "analyst-2"}
+{"host": "workstation-2", "id": "benign-22-1", "new_role": "admin", "old_role": "user", "outcome": "denied", "timestamp": "2026-10-07T04:00:00Z", "type": "privilege_change", "user": "analyst-2"}
+{"bytes": 1048576, "destination_scope": "external", "direction": "outbound", "host": "workstation-2", "id": "benign-22-2", "timestamp": "2026-10-07T07:00:00Z", "type": "data_transfer", "user": "analyst-2"}
+{"host": "workstation-2", "id": "benign-22-3", "outcome": "failed", "timestamp": "2026-10-07T10:00:00Z", "type": "audit_logging_disabled", "user": "analyst-2"}
+{"bytes": 15728640, "destination_scope": "internal", "direction": "outbound", "host": "workstation-2", "id": "benign-22-4", "timestamp": "2026-10-07T13:00:00Z", "type": "data_transfer", "user": "analyst-2"}
+{"host": "workstation-2", "id": "benign-22-5", "outcome": "denied", "timestamp": "2026-10-07T16:00:00Z", "type": "service_stopped", "user": "analyst-2"}
+{"host": "workstation-3", "id": "benign-23-0", "outcome": "success", "timestamp": "2026-10-08T01:00:00Z", "type": "login", "user": "analyst-3"}
+{"host": "workstation-3", "id": "benign-23-1", "new_role": "admin", "old_role": "user", "outcome": "denied", "timestamp": "2026-10-08T04:00:00Z", "type": "privilege_change", "user": "analyst-3"}
+{"bytes": 1048576, "destination_scope": "external", "direction": "outbound", "host": "workstation-3", "id": "benign-23-2", "timestamp": "2026-10-08T07:00:00Z", "type": "data_transfer", "user": "analyst-3"}
+{"host": "workstation-3", "id": "benign-23-3", "outcome": "failed", "timestamp": "2026-10-08T10:00:00Z", "type": "audit_logging_disabled", "user": "analyst-3"}
+{"bytes": 15728640, "destination_scope": "internal", "direction": "outbound", "host": "workstation-3", "id": "benign-23-4", "timestamp": "2026-10-08T13:00:00Z", "type": "data_transfer", "user": "analyst-3"}
+{"host": "workstation-3", "id": "benign-23-5", "outcome": "denied", "timestamp": "2026-10-08T16:00:00Z", "type": "service_stopped", "user": "analyst-3"}
+{"host": "workstation-4", "id": "benign-24-0", "outcome": "success", "timestamp": "2026-10-09T01:00:00Z", "type": "login", "user": "analyst-4"}
+{"host": "workstation-4", "id": "benign-24-1", "new_role": "admin", "old_role": "user", "outcome": "denied", "timestamp": "2026-10-09T04:00:00Z", "type": "privilege_change", "user": "analyst-4"}
+{"bytes": 1048576, "destination_scope": "external", "direction": "outbound", "host": "workstation-4", "id": "benign-24-2", "timestamp": "2026-10-09T07:00:00Z", "type": "data_transfer", "user": "analyst-4"}
+{"host": "workstation-4", "id": "benign-24-3", "outcome": "failed", "timestamp": "2026-10-09T10:00:00Z", "type": "audit_logging_disabled", "user": "analyst-4"}
+{"bytes": 15728640, "destination_scope": "internal", "direction": "outbound", "host": "workstation-4", "id": "benign-24-4", "timestamp": "2026-10-09T13:00:00Z", "type": "data_transfer", "user": "analyst-4"}
+{"host": "workstation-4", "id": "benign-24-5", "outcome": "denied", "timestamp": "2026-10-09T16:00:00Z", "type": "service_stopped", "user": "analyst-4"}
+{"host": "workstation-0", "id": "benign-25-0", "outcome": "success", "timestamp": "2026-10-10T01:00:00Z", "type": "login", "user": "analyst-0"}
+{"host": "workstation-0", "id": "benign-25-1", "new_role": "admin", "old_role": "user", "outcome": "denied", "timestamp": "2026-10-10T04:00:00Z", "type": "privilege_change", "user": "analyst-0"}
+{"bytes": 1048576, "destination_scope": "external", "direction": "outbound", "host": "workstation-0", "id": "benign-25-2", "timestamp": "2026-10-10T07:00:00Z", "type": "data_transfer", "user": "analyst-0"}
+{"host": "workstation-0", "id": "benign-25-3", "outcome": "failed", "timestamp": "2026-10-10T10:00:00Z", "type": "audit_logging_disabled", "user": "analyst-0"}
+{"bytes": 15728640, "destination_scope": "internal", "direction": "outbound", "host": "workstation-0", "id": "benign-25-4", "timestamp": "2026-10-10T13:00:00Z", "type": "data_transfer", "user": "analyst-0"}
+{"host": "workstation-0", "id": "benign-25-5", "outcome": "denied", "timestamp": "2026-10-10T16:00:00Z", "type": "service_stopped", "user": "analyst-0"}
+{"host": "workstation-1", "id": "benign-26-0", "outcome": "success", "timestamp": "2026-10-11T01:00:00Z", "type": "login", "user": "analyst-1"}
+{"host": "workstation-1", "id": "benign-26-1", "new_role": "admin", "old_role": "user", "outcome": "denied", "timestamp": "2026-10-11T04:00:00Z", "type": "privilege_change", "user": "analyst-1"}
+{"bytes": 1048576, "destination_scope": "external", "direction": "outbound", "host": "workstation-1", "id": "benign-26-2", "timestamp": "2026-10-11T07:00:00Z", "type": "data_transfer", "user": "analyst-1"}
+{"host": "workstation-1", "id": "benign-26-3", "outcome": "failed", "timestamp": "2026-10-11T10:00:00Z", "type": "audit_logging_disabled", "user": "analyst-1"}
+{"bytes": 15728640, "destination_scope": "internal", "direction": "outbound", "host": "workstation-1", "id": "benign-26-4", "timestamp": "2026-10-11T13:00:00Z", "type": "data_transfer", "user": "analyst-1"}
+{"host": "workstation-1", "id": "benign-26-5", "outcome": "denied", "timestamp": "2026-10-11T16:00:00Z", "type": "service_stopped", "user": "analyst-1"}
+{"host": "workstation-2", "id": "benign-27-0", "outcome": "success", "timestamp": "2026-10-12T01:00:00Z", "type": "login", "user": "analyst-2"}
+{"host": "workstation-2", "id": "benign-27-1", "new_role": "admin", "old_role": "user", "outcome": "denied", "timestamp": "2026-10-12T04:00:00Z", "type": "privilege_change", "user": "analyst-2"}
+{"bytes": 1048576, "destination_scope": "external", "direction": "outbound", "host": "workstation-2", "id": "benign-27-2", "timestamp": "2026-10-12T07:00:00Z", "type": "data_transfer", "user": "analyst-2"}
+{"host": "workstation-2", "id": "benign-27-3", "outcome": "failed", "timestamp": "2026-10-12T10:00:00Z", "type": "audit_logging_disabled", "user": "analyst-2"}
+{"bytes": 15728640, "destination_scope": "internal", "direction": "outbound", "host": "workstation-2", "id": "benign-27-4", "timestamp": "2026-10-12T13:00:00Z", "type": "data_transfer", "user": "analyst-2"}
+{"host": "workstation-2", "id": "benign-27-5", "outcome": "denied", "timestamp": "2026-10-12T16:00:00Z", "type": "service_stopped", "user": "analyst-2"}
+{"host": "workstation-3", "id": "benign-28-0", "outcome": "success", "timestamp": "2026-10-13T01:00:00Z", "type": "login", "user": "analyst-3"}
+{"host": "workstation-3", "id": "benign-28-1", "new_role": "admin", "old_role": "user", "outcome": "denied", "timestamp": "2026-10-13T04:00:00Z", "type": "privilege_change", "user": "analyst-3"}
+{"bytes": 1048576, "destination_scope": "external", "direction": "outbound", "host": "workstation-3", "id": "benign-28-2", "timestamp": "2026-10-13T07:00:00Z", "type": "data_transfer", "user": "analyst-3"}
+{"host": "workstation-3", "id": "benign-28-3", "outcome": "failed", "timestamp": "2026-10-13T10:00:00Z", "type": "audit_logging_disabled", "user": "analyst-3"}
+{"bytes": 15728640, "destination_scope": "internal", "direction": "outbound", "host": "workstation-3", "id": "benign-28-4", "timestamp": "2026-10-13T13:00:00Z", "type": "data_transfer", "user": "analyst-3"}
+{"host": "workstation-3", "id": "benign-28-5", "outcome": "denied", "timestamp": "2026-10-13T16:00:00Z", "type": "service_stopped", "user": "analyst-3"}
+{"host": "attack-host", "id": "attack-privilege", "new_role": "admin", "old_role": "user", "outcome": "success", "timestamp": "2026-10-13T17:00:00Z", "type": "privilege_change", "user": "suspect-demo"}
+{"bytes": 6291456, "destination_scope": "external", "direction": "outbound", "host": "attack-host", "id": "attack-transfer-1", "timestamp": "2026-10-13T17:03:00Z", "type": "data_transfer", "user": "suspect-demo"}
+{"bytes": 6291456, "destination_scope": "external", "direction": "outbound", "host": "attack-host", "id": "attack-transfer-2", "timestamp": "2026-10-13T17:07:00Z", "type": "data_transfer", "user": "suspect-demo"}
+{"host": "attack-host", "id": "attack-sabotage", "outcome": "success", "timestamp": "2026-10-13T17:10:00Z", "type": "backup_deleted", "user": "suspect-demo"}
+{"host": "workstation-4", "id": "benign-29-0", "outcome": "success", "timestamp": "2026-10-14T01:00:00Z", "type": "login", "user": "analyst-4"}
+{"host": "workstation-4", "id": "benign-29-1", "new_role": "admin", "old_role": "user", "outcome": "denied", "timestamp": "2026-10-14T04:00:00Z", "type": "privilege_change", "user": "analyst-4"}
+{"bytes": 1048576, "destination_scope": "external", "direction": "outbound", "host": "workstation-4", "id": "benign-29-2", "timestamp": "2026-10-14T07:00:00Z", "type": "data_transfer", "user": "analyst-4"}
+{"host": "workstation-4", "id": "benign-29-3", "outcome": "failed", "timestamp": "2026-10-14T10:00:00Z", "type": "audit_logging_disabled", "user": "analyst-4"}
+{"bytes": 15728640, "destination_scope": "internal", "direction": "outbound", "host": "workstation-4", "id": "benign-29-4", "timestamp": "2026-10-14T13:00:00Z", "type": "data_transfer", "user": "analyst-4"}
+{"host": "workstation-4", "id": "benign-29-5", "outcome": "denied", "timestamp": "2026-10-14T16:00:00Z", "type": "service_stopped", "user": "analyst-4"}

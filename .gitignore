@@ -5,6 +5,7 @@ __pycache__/
 .env
 .env.*
 !.env.example
+.streamlit/secrets.toml
 data/
 *.duckdb
 *.duckdb.wal

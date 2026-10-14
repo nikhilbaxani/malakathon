@@ -1,7 +1,7 @@
 # GSEC Sentinel: contratos de integración (fase 1)
 
-Estado: propuesta local para el prototipo, 14 de octubre de 2026. Los formatos del
-dataset, el mecanismo oficial de contención, la API de TypeSafe Jev y la posible
+Estado: contrato local para el prototipo, 14 de octubre de 2026. Los formatos del
+dataset, el mecanismo oficial de contención, la prueba real de Jev con SDK/clave y la posible
 obligación de OCI siguen sin confirmar. Ningún campo de este documento pretende
 describir telemetría oficial.
 
@@ -36,7 +36,7 @@ desconocidos y fechas sin zona horaria. Las fechas derivadas se convierten a UTC
 | `IngestionResult` / `IngestionIssue` | Lote y partición, IDs aceptados, errores con número de registro lógico, referencia al original y motivo. |
 | `Alert` | `alert_id`, partición de dataset, `rule_id`, título, descripción, severidad, `detected_at`, `evidence_event_ids` no vacía. Cada ID debe resolver a un `Event` de la misma partición. |
 | `Incident` | `incident_id`, partición, título, estado, `created_at`, `alert_ids` y `evidence_event_ids` no vacías. Las referencias deben resolver dentro de la misma partición. |
-| `DetectionResult` | Alertas e incidentes producidos por una ejecución; la API persiste y devuelve sus IDs. |
+| `DetectionResult` | Alertas e incidentes producidos por una ejecución. La API persiste solo las ejecuciones completas actuales; los cortes temporales devuelven resultados transitorios con sus IDs y objetos. |
 | `TriageResult` | `triage_id`, `incident_id`, `engine` (`deterministic` o `jev`), `assessment`, resumen, razonamiento, `generated_at`, `evidence_event_ids` no vacía. Sus conclusiones son evaluación, no hechos de telemetría. |
 | `ContainmentAction` | `action_id`, `incident_id`, tipo, objetivo, `mode`, estado, fecha, `evidence_event_ids`. En modo `live` se exigen identificador de aprobación, autorizador y fecha; una verificación de permisos en el servicio sigue siendo obligatoria antes de ejecutar. Fase 1 solo registra simulaciones. |
 
@@ -56,8 +56,10 @@ El esquema no puede comprobar por sí solo claves foráneas ni la identidad de
 quien autoriza. El servicio y la persistencia deben comprobar ambas al escribir.
 Una alerta nunca se crea con evidencia ausente. La reproducción hasta un instante
 `T` debe calcular resultados solo con `Event.timestamp_utc <= T`. En el primer
-corte, `as_of` limita la consulta de eventos y la ejecución de detección. Un
-historial persistente de ejecuciones de replay se deja para P2.
+corte, `as_of` limita la consulta de eventos y la ejecución de detección. Las
+ejecuciones con `as_of`, `from_utc` o `to_utc` son transitorias y no escriben
+alertas ni incidentes en la investigación actual. Un historial persistente de
+ejecuciones de replay se deja para P2.
 
 ## API HTTP mínima propuesta (`/v1`)
 
@@ -68,10 +70,11 @@ historial persistente de ejecuciones de replay se deja para P2.
 | `GET /v1/events` | Buscar por partición, intervalo UTC y paginación; `as_of` limita la reproducción. |
 | `GET /v1/events/{event_id}` | Evento normalizado y referencia al original, dentro de una partición indicada. |
 | `GET /v1/events/{event_id}/raw` | Bytes originales (`application/octet-stream`) del archivo que contiene el evento, dentro de una partición indicada. |
-| `POST /v1/detections/run` | Ejecutar reglas deterministas sobre una partición y un intervalo UTC, opcionalmente con corte `as_of`; respuesta con IDs de alertas e incidentes. |
+| `POST /v1/detections/run` | Ejecutar reglas deterministas sobre una partición. La ejecución completa persiste alertas e incidentes; las consultas con intervalo o `as_of` son transitorias. La respuesta incluye IDs, `persisted` y, para cortes transitorios, los objetos de alertas e incidentes. |
 | `GET /v1/alerts` | Consultar alertas con IDs de evidencia. |
 | `GET /v1/incidents` | Consultar incidentes y sus estados. |
 | `GET /v1/incidents/{incident_id}` | Detalle, evidencias, línea temporal, triage y acciones simuladas. |
+| `GET /v1/incidents/{incident_id}/graph` | Grafo forense de un incidente y una partición; `as_of` opcional calcula una vista histórica transitoria. |
 | `POST /v1/incidents/{incident_id}/triage` | Evaluación estructurada; usa fallback determinista si Jev no está configurado o falla. |
 | `POST /v1/incidents/{incident_id}/containment/simulate` | Registrar una acción simulada, etiquetada como tal. No llama a sistemas externos. |
 
@@ -85,7 +88,11 @@ de `accepted_event_ids` y `errors`. Para un error, `record_number` cuenta
 registros lógicos desde 1 y `raw_ref` apunta al archivo original.
 
 `POST /v1/detections/run` recibe JSON con `dataset_kind`, `dataset_id`,
-`from_utc`, `to_utc` y `as_of` opcionales; devuelve `alert_ids` e `incident_ids`.
+`from_utc`, `to_utc` y `as_of` opcionales; devuelve `alert_ids`, `incident_ids`,
+`persisted`, `alerts` e `incidents`. En una ejecución completa, `persisted=true`
+y las listas de objetos pueden estar vacías porque se consultan mediante GET.
+Con cualquier filtro temporal, `persisted=false` y la respuesta incluye los
+objetos de esa ejecución para mostrar replay sin alterar el estado actual.
 `POST /v1/incidents/{incident_id}/triage` devuelve `TriageResult`.
 `POST /v1/incidents/{incident_id}/containment/simulate` recibe `action_type`,
 `target` y `evidence_event_ids` y devuelve `ContainmentAction` con
@@ -98,6 +105,22 @@ valor serializado con su modelo compartido; las listas pueden estar vacías.
 Así el frontend puede trabajar con JSON de ejemplo de esa misma forma.
 Las colecciones y el detalle de incidente exigen `dataset_kind` y `dataset_id`.
 La validación de entrada devuelve 422 y una referencia inexistente devuelve 404.
+
+El grafo recibe obligatoriamente `dataset_kind` y `dataset_id`, y opcionalmente
+`as_of` (ISO 8601 con zona) y `max_nodes` (1 a 250; 120 por defecto). Devuelve
+`nodes`, `edges` y `metadata` en JSON. Cada nodo tiene `id` estable dentro de
+la partición, `type`, `label` y `attributes`; cada arista tiene `source`,
+`target`, `type`, `evidence_event_ids`, intervalo temporal, `provenance` y
+`basis` (`observed` o `derived`). La evidencia de una arista debe resolver a
+eventos del mismo incidente y partición. Las relaciones `derived` indican
+asociaciones de alertas e incidentes calculadas, no hechos directos del log.
+Los tipos de entidad opcionales solo se crean si los campos del evento los
+identifican de forma explícita. `metadata` indica partición, incidente, corte
+temporal, tamaño, truncamiento y limitaciones. Con `as_of`, la API reconstruye
+alertas e incidentes solo con eventos hasta el corte y no escribe en DuckDB;
+acepta el ID transitorio de esa ejecución o el ID de un incidente actual cuando
+su antecedente histórico se puede identificar sin ambigüedad.
+
 Se evita una ruta de
 contención real hasta conocer mecanismo, autorización y requisitos del evento.
 La forma exacta del cuerpo de subida se fija al implementar el adaptador y se
@@ -111,7 +134,8 @@ Las interfaces Python están en `backend/ports.py`:
   guarda el original antes de analizar y devuelve `IngestionResult`.
 - `DetectionEngine.detect`: recibe solo eventos de una partición ya filtrados
   por intervalo y `as_of`, más `detected_at` consciente de zona; devuelve
-  `DetectionResult`. El coordinador persiste sus alertas e incidentes.
+  `DetectionResult`. El coordinador persiste sus alertas e incidentes solo en
+  ejecuciones completas; los cortes temporales se devuelven sin escritura.
 - `TriageEngine.triage`: recibe incidente, alertas y eventos de evidencia
   resueltos en la misma partición, más `generated_at` consciente de zona;
   devuelve `TriageResult`. El coordinador usa Jev solo si su adaptador está
@@ -151,7 +175,7 @@ incluyen `dataset_kind` y `dataset_id` en índices y claves de consulta.
    sin editar. Nadie edita archivos de otro dueño; el coordinador integra y
    ejecuta Git de forma secuencial.
 
-### Primera prueba end-to-end que debe implementar la fase 2
+### Primera prueba end-to-end de la fase 2
 
 Con un archivo **sintético local inventado y etiquetado para pruebas** de tres
 eventos, importarlo por HTTP; verificar que el almacén devuelve los bytes
@@ -160,14 +184,17 @@ una alerta con IDs existentes; abrir un incidente; solicitar triage determinista
 comprobar en la API y la consola el incidente y su evidencia; registrar una
 simulación y verificar que no se invocó ningún ejecutor externo. En un almacén
 aislado, repetir la consulta y la detección con `as_of` anterior al tercer
-evento y asegurar que éste no aparece ni influye en esa ejecución. Esta prueba
-aún no existe en fase 1.
+evento y asegurar que éste no aparece ni influye en esa ejecución. El flujo
+está cubierto por `tests/test_api_flow.py`; `tests/test_demo.py` amplía la
+regresión con un fixture sintético de 30 días y verdad terreno separada.
 
 ## Decisiones pendientes del evento
 
 - Forma, volumen, codificación, huso horario e identificadores del dataset.
 - Señales observables para las reglas, umbrales y verdad de referencia.
-- API y condiciones de uso de TypeSafe Jev; de no confirmarse, solo fallback.
+- Llamada real a TypeSafe Jev con SDK y clave, y condiciones de uso del evento;
+  la interfaz del SDK se contrastó con documentación oficial, pero aquí solo
+  se han probado mocks y el fallback determinista.
 - Proveedor y alcance de OCI, si se exige.
 - Mecanismo, autoridad y auditoría de contención real; requiere aprobación
   expresa antes de cualquier ejecución.
