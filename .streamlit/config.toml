@@ -1,0 +1,24 @@
+[theme]
+base = "dark"
+primaryColor = "#46C8BA"
+backgroundColor = "#0B0F15"
+secondaryBackgroundColor = "#141B25"
+textColor = "#E4EAF2"
+font = "sans-serif"
+codeFont = "monospace"
+baseFontSize = 14
+baseRadius = "small"
+buttonRadius = "small"
+borderColor = "#293442"
+headingFontSizes = ["1.7rem", "1.35rem", "1.15rem", "1rem", "0.95rem", "0.9rem"]
+metricValueFontSize = "1.8rem"
+redColor = "#F87171"
+orangeColor = "#FBBF24"
+
+[theme.sidebar]
+backgroundColor = "#101721"
+secondaryBackgroundColor = "#141B25"
+headingFontSizes = ["1.3rem", "1.1rem", "1rem", "0.95rem", "0.9rem", "0.85rem"]
+
+[client]
+toolbarMode = "minimal"

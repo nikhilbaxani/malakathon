@@ -71,6 +71,19 @@ class SocApi:
     def incidents(self, kind: str, dataset_id: str) -> list[dict[str, Any]]:
         return self._request("GET", "/v1/incidents", params=self._partition(kind, dataset_id))
 
+    def raw_event(self, event_id: str, kind: str, dataset_id: str) -> bytes:
+        """Fetch the exact source file, which may contain several event records."""
+        path = f"/v1/events/{quote(event_id, safe='')}/raw"
+        query = urlencode(self._partition(kind, dataset_id))
+        request = Request(f"{self.base_url}{path}?{query}", method="GET")
+        try:
+            with urlopen(request, timeout=self.timeout) as response:
+                return response.read()
+        except HTTPError as exc:
+            raise ApiError(f"HTTP {exc.code}: no se pudo recuperar el archivo original") from exc
+        except (URLError, TimeoutError, ValueError) as exc:
+            raise ApiError(str(exc)) from exc
+
     def incident_detail(self, incident_id: str, kind: str, dataset_id: str) -> dict[str, Any]:
         path = f"/v1/incidents/{quote(incident_id, safe='')}"
         return self._request("GET", path, params=self._partition(kind, dataset_id))

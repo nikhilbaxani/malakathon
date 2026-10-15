@@ -188,6 +188,23 @@ evento y asegurar que éste no aparece ni influye en esa ejecución. El flujo
 está cubierto por `tests/test_api_flow.py`; `tests/test_demo.py` amplía la
 regresión con un fixture sintético de 30 días y verdad terreno separada.
 
+## Empaquetado reproducible de la demo (pendiente)
+
+Preparar Docker Compose como trabajo P1 de entrega; pasa a P0 si el jurado
+exige ejecutar la demo en su propio equipo. La propuesta usa dos servicios:
+FastAPI es el único que abre DuckDB y los archivos originales; Streamlit
+consume la API por el nombre del servicio en la red interna. Publicar solo la
+consola en localhost para la demo local. La API debe tener una comprobación de
+salud y la UI debe esperar a que esté disponible.
+
+Fijar versiones de Python y dependencias probadas, conservar DuckDB y los
+originales en un volumen, y ofrecer una carga idempotente del fixture marcada
+explícitamente como sintética. Jev queda desactivado por defecto; cualquier
+clave se facilita fuera de la imagen y del repositorio. Documentar los comandos
+de arranque, carga, parada y recuperación, y validar el recorrido completo en
+un equipo limpio antes de considerarlo listo. OCI sigue siendo opcional hasta
+que se confirmen los requisitos del evento.
+
 ## Decisiones pendientes del evento
 
 - Forma, volumen, codificación, huso horario e identificadores del dataset.

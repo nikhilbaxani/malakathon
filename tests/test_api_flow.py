@@ -34,7 +34,7 @@ class _Client:
         return self.request("POST", path, **kwargs)
 
 
-def test_synthetic_http_flow_and_replay(tmp_path, monkeypatch):
+def test_synthetic_http_flow_and_replay(tmp_path, monkeypatch, kpi_values):
     # This is an invented test fixture, not a representation of an official feed.
     records = [
         {
@@ -196,12 +196,74 @@ def test_synthetic_http_flow_and_replay(tmp_path, monkeypatch):
     dashboard.run(timeout=10)
     dashboard.sidebar.text_input[0].set_value("http-demo").run(timeout=10)
     assert not dashboard.exception
-    assert [item.value for item in dashboard.metric[:3]] == ["3", "0", "0"]
+    assert kpi_values(dashboard)[:3] == ["3", "0", "0"]
     next(button for button in dashboard.button if button.label == "Ejecutar detección").click().run(timeout=10)
     assert not dashboard.exception
-    assert [item.value for item in dashboard.metric[:3]] == ["3", "2", "1"]
-    assert any(box.label == "Incidente del grafo" for box in dashboard.selectbox)
-    assert any("nodos y" in caption.value and "relaciones visibles" in caption.value for caption in dashboard.caption)
+    assert kpi_values(dashboard)[:3] == ["3", "2", "1"]
+    dashboard.sidebar.radio[0].set_value("Investigation Workspace").run(timeout=10)
+    assert not dashboard.exception
+    assert not dashboard.error
+    assert any(box.label == "Incidente en investigación" for box in dashboard.selectbox)
+    graph_labels = [item.value for item in dashboard.caption] + [item.proto.body for item in dashboard.get("html")]
+    assert any("nodos" in text.casefold() and "relaciones" in text.casefold() for text in graph_labels)
+    relation = next(box for box in dashboard.selectbox if box.label == "Relación a investigar")
+    assert relation.options
+    assert relation.options[0].startswith("R001")
+    assert not any(event_id in label for event_id in id_by_source.values() for label in relation.options)
+    # Select a relation and prove the evidence panel resolves one of its real events.
+    relation.set_value(0).run(timeout=10)
+    assert not dashboard.exception and not dashboard.error
+    selected_event = next(box for box in dashboard.selectbox if box.label == "Evento de evidencia").value
+    assert selected_event in {event_id for edge in graph["edges"] for event_id in edge["evidence_event_ids"]}
+    assert not dashboard.get("download_button")
+    next(button for button in dashboard.button if button.label == "Cargar archivo original").click().run(timeout=10)
+    assert not dashboard.exception and not dashboard.error
+    original_files = dashboard.session_state["raw_files"]
+    assert original_files[("http://127.0.0.1:8000", "synthetic", "http-demo", selected_event)] == payload
+    assert dashboard.get("download_button")
+
+    next(button for button in dashboard.button if button.label == "Evaluar respuesta →").click().run(timeout=10)
+    assert not dashboard.exception and not dashboard.error
+    assert dashboard.session_state["nav"] == "Response Center"
+    assert next(box for box in dashboard.selectbox if box.label == "Seleccionar incidente para respuesta").value == incident_id
+    initial_actions = len(client.get(f"/v1/incidents/{incident_id}", params=partition).json()["containment_actions"])
+    next(box for box in dashboard.text_input if box.label == "Tipo de acción").set_value("isolate_host")
+    next(box for box in dashboard.text_input if box.label == "Objetivo exacto").set_value("host-1")
+    next(box for box in dashboard.multiselect if box.label == "Evidencia que justifica la simulación").set_value([selected_event])
+    next(button for button in dashboard.button if button.label == "Registrar simulación").click().run(timeout=10)
+    assert client.get(f"/v1/incidents/{incident_id}", params=partition).json()["containment_actions"] == persisted["containment_actions"]
+    next(box for box in dashboard.checkbox if box.label.startswith("Confirmo")).set_value(True)
+    next(button for button in dashboard.button if button.label == "Registrar simulación").click().run(timeout=10)
+    assert not dashboard.exception and not dashboard.error
+    assert any("mode=simulation" in message.value for message in dashboard.success)
+    after_simulation = client.get(f"/v1/incidents/{incident_id}", params=partition).json()
+    assert len(after_simulation["containment_actions"]) == initial_actions + 1
+    assert after_simulation["containment_actions"][-1]["status"] == "simulated"
+
+    dashboard.sidebar.radio[0].set_value("Attack Replay").run(timeout=10)
+    from datetime import datetime
+    dashboard.sidebar.date_input[0].set_value(datetime(2026, 10, 15).date())
+    dashboard.sidebar.time_input[0].set_value(datetime(2026, 10, 15, 8, 1, 30).time())
+    dashboard.run(timeout=10)
+    next(button for button in dashboard.button if button.label == "Ejecutar detección hasta el corte").click().run(timeout=10)
+    assert not dashboard.exception and not dashboard.error
+    assert kpi_values(dashboard)[0] == "2"
+    next(button for button in dashboard.button if button.label == "Investigar →").click().run(timeout=10)
+    assert not dashboard.exception and not dashboard.error
+    assert not any(button.label == "Cargar archivo original" for button in dashboard.button)
+    assert not dashboard.get("download_button")
+    assert next(button for button in dashboard.button if button.label == "Evaluar respuesta →").disabled
+    assert client.get(f"/v1/incidents/{incident_id}", params=partition).json() == after_simulation
+
+    dashboard.sidebar.toggle[0].set_value(False)
+    dashboard.sidebar.radio[0].set_value("Response Center")
+    dashboard.run(timeout=10)
+    assert not dashboard.exception and not dashboard.error
+    assert next(box for box in dashboard.selectbox if box.label == "Seleccionar incidente para respuesta").value == incident_id
+    dashboard.sidebar.selectbox[0].set_value("official").run(timeout=10)
+    assert not dashboard.exception and not dashboard.error
+    assert dashboard.session_state["selected_incident"] is None
+    assert not any(box.label == "Seleccionar incidente para respuesta" for box in dashboard.selectbox)
 
 
 def test_http_rejects_invalid_input_and_cross_partition_reads(tmp_path):
